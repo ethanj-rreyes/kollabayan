@@ -1,11 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500;1,7..72,600&display=swap');
 @import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  KollaBayan brand tokens — Gabay sa Brand v1.0 (Setyembre 2026)     */
+/*  Ratio: 70% Layag + Buhangin · 20% Dagat + Laot · 10% Lalim +       */
+/*  Liwayway. Liwayway is never text on Layag — sun + verified only.   */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-layag: #f3f7f5;     /* Sail cloth — primary background */
+  --color-buhangin: #dfe6e2;  /* Sea glass — panels, cards, borders */
+  --color-dagat: #0d3446;     /* Deep sea — dark backgrounds, links */
+  --color-laot: #1e5b57;      /* Open sea — primary action */
+  --color-lalim: #1f5a66;     /* Deep teal — labels, lines */
+  --color-liwayway: #d7a441;  /* Dawn gold — sun, verified badge only */
+  --color-tinta: #0a2532;     /* Ink — text */
+  --color-sabit: #b4533f;     /* Error state (not in core palette) */
+
+  /* Literata 600: headlines, taglines, pull quotes — never UI text < 20px */
+  --font-display: 'Literata', Georgia, serif;
+  /* Albert Sans 400/600: body, UI, labels */
+  --font-sans: 'Albert Sans', system-ui, sans-serif;
+}
 
 html,
 body,
 #root {
   height: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-tinta);
+  background: var(--color-layag);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Brand headline treatment: big, tight leading, slight negative tracking */
+@layer base {
+  .font-display {
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-laot) 25%, transparent);
 }
 
 * {

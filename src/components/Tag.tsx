@@ -2,16 +2,22 @@ interface TagProps {
   label: string;
   selected?: boolean;
   onClick?: () => void;
+  size?: "sm" | "md";
 }
 
-export default function Tag({ label, selected = false, onClick }: TagProps) {
+export default function Tag({ label, selected = false, onClick, size = "md" }: TagProps) {
+  const pad = size === "sm" ? "px-2.5 py-1 text-[11px]" : "px-3 py-1.5 text-xs";
   return (
     <button
+      type="button"
       onClick={onClick}
-      className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors cursor-pointer select-none ${
+      aria-pressed={selected}
+      className={`inline-flex items-center rounded-full font-semibold border transition-colors select-none ${pad} ${
+        onClick ? "cursor-pointer" : "cursor-default"
+      } ${
         selected
-          ? "bg-slate-800 text-white border-slate-800"
-          : "bg-white text-slate-600 border-slate-300 hover:border-slate-500 hover:text-slate-800"
+          ? "bg-laot text-layag border-laot"
+          : "bg-white text-tinta/75 border-buhangin hover:border-lalim/50 hover:text-tinta"
       }`}
     >
       {label}
